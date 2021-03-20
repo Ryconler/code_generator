@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: code_generator
+  freemarker:
+    #allow-request-override: false
+    #cache: true
+    #check-template-location: true
+    charset: UTF-8
+    #content-type: text/html
+    #expose-request-attributes: true
+    #expose-session-attributes: true
+    #expose-spring-macro-helpers: false
+    template-loader-path: file:templates
+    suffix: .ftl
+    #request-context-attribute: request
+    
+server:
+  port: 9010
+  servlet:
+    context-path: /code
+
+logging:
+  config: config/logback.xml

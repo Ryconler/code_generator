@@ -1,0 +1,28 @@
+<configuration scan="true" scanPeriod="5 minutes">
+	<property name="LOG_HOME" value="./logs" />
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger:%L - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="sysLog"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/code.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/bak/code.log.%d{yyyy-MM-dd}
+			</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger:%L - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<root level="INFO">
+		<appender-ref ref="sysLog" />
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>
